@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Page-d'accueil{% endblock %}</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        body
+        {
+            font-family: Arial,sans-serif;
+            font-size: 19px;
+        }
+        h1
+        {
+            font-family: 'Crete Round', serif;
+            font-size: 45px;
+        }
+        h2
+        {
+            font-size: 55px;
+        }
+        h3
+        {
+            font-size: 30px;
+        }
+        h4
+        {
+            font-size: 24px;
+        }
+        p
+        {
+            line-height: 20px;
+            color: #777;
+        }
+        ul
+        {
+            list-style: none;
+        }
+        a
+        {
+            text-decoration: none;
+            color: #444;
+        }
+        .wrapper
+        {
+            width: 940px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        .orange
+        {
+            color: #ff7a00;
+        }
+        .clear
+        {
+            clear: both;
+        }
+        small
+        {
+            font-size: 13px;
+            font-style:italic;
+        }
+
+        /* HEADER */
+
+        header
+        {
+            height: 120px;
+        }
+        header h1
+        {
+            float: left;
+            margin-top: 32px;
+        }
+        header nav
+        {
+            float: right;
+            margin-bottom: 5px;
+            margin-right: -44px;
+        }
+        header nav ul li
+        {
+            float:left;
+            display: inline-block;
+        }
+        header nav ul li a
+        {
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        /* MAIN IMAGE */
+
+        #main-image
+        {
+            height: 580px;
+            background: url('image/street-light.jpg') center;
+        }
+        #main-image h2
+        {
+            font-weight: normal;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 150px 0 40px 0;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+        /Steps/
+        #steps ul{
+            margin: 80px 0;
+        }
+        #steps ul li{
+            width: 300px;
+            float: left;
+            padding-top: 140px;
+            text-align: center;
+            margin-right: 10px;
+        }
+        #steps h4{
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        #a-propos {
+            margin-top: 100px;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+        .title {
+            text-transform: capitalize;
+            margin: 70px 0;
+            font-weight: bold;
+            color: rgba(62, 71, 87, 0.83);
+            position: relative;
+            margin-left: 16px;
+            font-size: 43px;
+            text-align: center;
+
+        }
+        .title::after {
+            position: absolute;
+            left: 300px;
+            content: "";
+            height: 100%;
+            background-color: rgba(204, 123, 51, 0.85);
+            width: 5px;
+        }
+        .title2 {
+            text-transform: capitalize;
+            margin: 150px 0;
+            font-weight: bold;
+            color: rgba(62, 71, 87, 0.83);
+            position: relative;
+            font-size: 43px;
+            text-align: center;
+            margin-bottom: 85px;
+
+
+        }
+        .title2::after {
+            position: absolute;
+            left: 470px;
+            content: "";
+            height: 100%;
+            background-color: rgba(204, 123, 51, 0.85);
+            width: 5px;
+        }
+        .title3 {
+            text-transform: capitalize;
+            margin: 150px 0;
+            font-weight: bold;
+            color: rgba(62, 71, 87, 0.83);
+            position: relative;
+            font-size: 43px;
+            text-align: center;
+            margin-bottom: 85px;
+
+        }
+        .title3::after {
+            position: absolute;
+            left: 348px;
+            content: "";
+            height: 100%;
+            background-color: rgba(204, 123, 51, 0.85);
+            width: 5px;
+        }
+        .img-desc .right h3 {
+            color: #fff;
+            font-size: 25px;
+            margin-bottom: 20px;
+
+        }
+        .img-desc .right p {
+            color: #999;
+            margin-bottom: 36px;
+        }
+        .img-desc .right a {
+            border: 1px solid #8a8a8a;
+            color: #8c500f;
+            font-size: 14px;
+            padding: 8px 25px;
+            font-weight: bold;
+            margin-left: 513px;
+            box-shadow: 0px 0px 10px;
+        }
+        .img-desc .left {
+            position: relative;
+            margin-left: 143px;
+            height: 247px;
+            width: 32%;
+            background-color: rgba(204, 123, 51, 0.85);
+        }
+        .img-desc .right {
+            width: 57%;
+        }
+
+        .img-desc .left video {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            box-shadow: 0 0 10px rgb(0, 0, 0);
+        }
+        .img-desc .left::after {
+            position: absolute;
+            bottom: -10px;
+            right: 10px;
+            content: "";
+            height: 100%;
+            background-color: rgba(62, 71, 87, 0.83);
+            width: 100%;
+            z-index: -1;
+        }
+        .left-right {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .left-right .left , .left-right .right  {
+            display: flex;
+            flex-direction: column;
+            width: 49%;
+        }
+        .img-desc .right h3 {
+            color: rgba(62, 71, 87, 0.83);
+            font-size: 25px;
+            margin-bottom: -187px;
+            margin-left: 634px;
+            margin-right: -516px;
+            margin-top: -253px;
+        }
+        .img-desc .right p {
+            color: #393939;
+            margin-bottom: 34px;
+            margin-top: 198px;
+            margin-left: 642px;
+            margin-right: -525px;
+        }
+        .img-desc .right a {
+            border: 1px solid #7d7d7d;
+            color: #915f00;
+            font-size: 14px;
+            padding: 8px 25px;
+            font-weight: bold;
+            margin-left: 645px;
+        }
+        form{
+            margin: 60px 0 20px 0;
+        }
+        label{
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: 10px;
+            color:#777;
+        }
+
+        footer{
+            height: 500px;
+            background-color: #444;
+        }
+        footer h1{
+            color: #fff;
+            text-align: center;
+            padding-top: 80px;
+
+        }
+        .copyright{
+            text-align: center;
+            font-weight: bold;
+            padding-top: 27px;
+            color: #777;
+        }
+        .home-btn {
+            margin-bottom: 20px;
+        }
+        .home-btn {
+            display:block;
+        }
+        .find_trip {
+            background-color: #121212;
+            padding: 0px 15px 0px 17px;
+            width: 80%;
+            position: absolute;
+            bottom: -70px;
+            margin-left: 140px;
+            border-radius: 55px;
+        }
+        .find_trip form {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 100%;
+
+        }
+        .find_trip form div , .find_trip form input[type="submit"]{
+            display: flex;
+            flex-direction: column;
+            width: 20%;
+        }
+        .find_trip form label {
+            color: #999;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        .find_trip form input {
+            padding: 8px 18px;
+            background-color: #0000002e;
+            border: 1px solid #777;
+            outline: 0;
+            width: 100%;
+            font-size: 13px;
+            color: #fff;
+            margin-bottom: 50px;
+
+        }
+        .find_trip form input[type="submit"] {
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            color: #6f6f6f;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        .find_trip form input[type="submit"]:hover {
+            box-shadow: 0 0 10px #d59a6f;
+        }
+        #step-1{
+            background: url('image/steps-icon-1.png') no-repeat top center;
+        }
+        #step-2{
+            background: url('image/steps-icon-2.png') no-repeat top center;
+        }
+        #step-3{
+            background: url('image/steps-icon-3.png') no-repeat top center;
+        }
+
+        #popular-destination {
+            padding: 0 10% ;
+            margin-bottom: 50px;
+        }
+        #popular-destination .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+            gap: 32px;
+        }
+        #popular-destination .content .box {
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            transition: 0.5s;
+        }
+        #popular-destination .content .box img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        .box .content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #fff;
+            text-align: center;
+            align-items: center;
+            transform: translateX(100%);
+            transition: 0.5s;
+        }
+        .box .content  h4 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+        .box .content p {
+            padding: 2px;
+            font-size: 12px;
+        }
+        .box .content p:nth-child(3){
+            margin-bottom: 25px;
+        }
+        .box .content a {
+            margin-top: 60px;
+            padding: 10px 60px;
+            border: 2px solid rgba(62, 71, 87, 0.83);
+            color: #8b8b8b;
+            font-weight: bold;
+        }
+        .box:hover {
+            box-shadow: 0 0 10px rgba(204, 123, 51, 0.85);
+        }
+        .box:hover .content {
+            transform: translateX(0);
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            background-color: #1212128c;
+            text-align: inherit;
+            vertical-align: middle;
+            border-radius: 21px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+        nav ul li a {
+            display: block;
+            text-decoration: none;
+        }
+        .dropdown-menu li {
+            border-bottom: 1px solid rgba(204, 123, 51, 0.85);
+            padding: 10px;
+        }
+
+        .dropdown-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+        .menu-a a{
+            color: #dfdfdf;
+            padding: 1px 79px 0px 0px;
+            margin-right: 0px;
+
+        }
+        .menu-a li a{
+            margin-right: 28px;
+            padding-right: 36px;
+        }
+        .copyright1{
+
+        }
+        .icons a{
+            text-decoration: none;
+            color: #fff;
+        }
+        .icons ion-icon{
+            color: #fff;
+            font-size: 30px;
+            padding-left: 14px;
+            padding-top: 5px;
+            transition: 0.3s ease;
+        }
+        .icons ion-icon:hover{
+            color: #ff7200;
+        }
+        .button-1
+        {
+            display: block;
+            width: 252px;
+            height: 50px;
+            background: rgba(204, 123, 51, 0.85);
+            color: #ddd;
+            font-size: 20px;
+            margin: 0 auto;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 22px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .button-1:hover
+        {
+            box-shadow: 3px 5px 15px rgba(204, 123, 51, 0.85);
+            transform: translateY(-5px);
+        }
+
+.blob {
+  max-height:90vh;
+  width:90vw;
+}
+.blob path {
+ animation: blob 7s linear  infinite , rot 53s linear infinite;
+}
+@keyframes blob {
+  0% {    d:path("M120,-157.6C152.7,-141.5,174.3,-102.6,194.8,-58.8C215.3,-14.9,234.6,33.8,228.4,80.8C222.2,127.8,190.4,173.1,148.1,184C105.8,195,52.9,171.5,-2.4,174.8C-57.8,178.2,-115.6,208.4,-137.5,190.9C-159.3,173.3,-145.3,108,-153,56.3C-160.7,4.6,-190.2,-33.4,-178.3,-54.2C-166.4,-75.1,-113.2,-78.8,-76.6,-93.6C-40,-108.3,-20,-134.2,11.9,-150.5C43.7,-166.8,87.4,-173.6,120,-157.6Z");
+  }
+  25% {   d:path("M67.8,-97.1C87.8,-78.8,103.8,-58.9,117.4,-34.1C130.9,-9.4,142,20.2,139.5,50.7C137,81.2,120.8,112.6,95.3,150.1C69.8,187.7,34.9,231.3,3.3,226.8C-28.2,222.2,-56.4,169.3,-91.6,134.9C-126.8,100.5,-169,84.6,-179.6,57.1C-190.2,29.7,-169.3,-9.3,-155.2,-49.7C-141,-90.1,-133.7,-132,-109,-148.8C-84.2,-165.6,-42.1,-157.3,-9.1,-144.8C23.9,-132.2,47.8,-115.5,67.8,-97.1Z");
+  }
+  50% {    d:path("M137.1,-191.3C172,-163.4,190.6,-115.7,197.2,-70.1C203.8,-24.4,198.5,19.2,178.9,51.5C159.3,83.9,125.5,105,93.3,129.6C61.1,154.1,30.6,182.1,1.1,180.6C-28.4,179.1,-56.8,148.2,-81.2,121.1C-105.6,94.1,-126.1,70.8,-141.6,41.6C-157.2,12.4,-168,-22.9,-153.9,-45C-139.8,-67,-100.7,-76,-70.9,-105.5C-41.1,-135,-20.6,-185,15.3,-206C51.1,-227.1,102.3,-219.1,137.1,-191.3Z");
+  }
+  75% {    d:path("M123.7,-157.1C162.4,-142.2,197.2,-108.8,202.8,-70.8C208.3,-32.9,184.5,9.7,169,54.2C153.6,98.7,146.4,145.2,119.7,162.7C92.9,180.2,46.4,168.6,-1.9,171.1C-50.2,173.7,-100.3,190.4,-122.2,171.3C-144.1,152.3,-137.7,97.5,-144.1,52.7C-150.6,7.9,-169.9,-26.8,-170.5,-64.8C-171,-102.8,-152.8,-144,-121.3,-161.3C-89.7,-178.5,-44.9,-171.8,-1.2,-170.1C42.5,-168.5,85,-172,123.7,-157.1Z");
+  }
+  100% {    d:path("M120,-157.6C152.7,-141.5,174.3,-102.6,194.8,-58.8C215.3,-14.9,234.6,33.8,228.4,80.8C222.2,127.8,190.4,173.1,148.1,184C105.8,195,52.9,171.5,-2.4,174.8C-57.8,178.2,-115.6,208.4,-137.5,190.9C-159.3,173.3,-145.3,108,-153,56.3C-160.7,4.6,-190.2,-33.4,-178.3,-54.2C-166.4,-75.1,-113.2,-78.8,-76.6,-93.6C-40,-108.3,-20,-134.2,11.9,-150.5C43.7,-166.8,87.4,-173.6,120,-157.6Z");
+  }
+}
+
+.chkl{
+    margin-top: 161px;
+    margin-left: 322px;
+    margin-bottom: -200px;
+    color: rgba(62, 71, 87, 0.83);
+    }
+.form-views {
+	background: #f5f5f5;
+    padding: 2rem;
+    max-width: 576px;
+    width: 100%;
+    border-radius: 2.75rem;
+    box-shadow: 0px 20px 0px 0px #5858589e;
+    text-align: center;
+    margin-left: 369px;
+}
+.form-views h3 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 1rem;
+}
+textarea {
+    width: 58%;
+    background: var(--light);
+    padding: 1rem;
+    border-radius: 1.5rem;
+    outline: none;
+    resize: none;
+    margin-bottom: 0.5rem;
+}
+.username {
+    width: 58%;
+    background: var(--light);
+    padding: 1rem;
+    border-radius: 1.5rem;
+    outline: none;
+    resize: none;
+    margin-bottom: 0.5rem;
+    border-color: #f56c1d;
+}
+.btn-group {
+	display: flex;
+	grid-gap: .5rem;
+	align-items: center;
+}
+.btn-group .btn {
+	padding: .75rem 1rem;
+	border-radius: .5rem;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	font-size: .875rem;
+	font-weight: 500;
+}
+.btn-group .btn.submit {
+	color: black;
+    background-color: #ff8100;
+    width: 143px;
+    margin-top: 27px;}
+.btn-group .btn.submit:hover {
+	background: var(--blue-d-1);
+}
+    </style>
+</head>
+<body style="background-color: white">
+<header>
+    <div class="wrapper">
+        <h1>Voyage-Maroc<span class="orange">.</span></h1>
+        <nav style="margin-top: 50px;">
+            <ul>
+                <li><a href="/">Accueil |</a></li>
+                {% if app.user %}
+                <li><a>{{app.user.username}} |</a></li>
+                <li><a href="{{ path('app_logout')}}">deconnexion |</a></li>
+                 {% else %}
+                <li><a href="{{ path('app_register')}}">S'INSCRIRE |</a></li>
+                <li><a href="{{ path('app_login')}}">Connexion |</a></li>
+                {% endif %}
+                <li class="dropdown">
+                    <a href="">Plus |</a>
+                    <ul class="dropdown-menu" style="margin-left: -13px;margin-right: 76px;width: 234px;height: 137px;width: 233px;height: 99px;">
+                        <nav class="menu-a" style="width: 232px;margin-right: 0px;text-align: center;">
+                            <li><a href="#">Centre d'aide</a></li>
+                            <li><a href="/views">Views</a></li>
+                        </nav>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<script>
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach((dropdown) => {
+        dropdown.addEventListener('click', () => {
+            dropdown.classList.toggle('active');
+        });
+    });
+</script>
+<section id="main-image">
+    <div class="wrapper">
+        <h2>Agence de voyage<br><br><strong>choisissez leur destination prochaine</strong></h2>
+    </div>
+</section>
+<section id="home">
+        <a href="/circuits" class="button-1" style="margin-top: -110px;">Mon destination</a>
+</section>
+<br><br><br>
+    <div class="chkl">
+        <h2>Commencer votre exploration .</h2>
+    </div>
+<svg class="blob"
+  viewBox="0 0 600 600"
+  style="    
+    width: 600.39;
+    height: 304.297;
+    margin-left: -60px;">
+  <g transform="translate(300,300)">
+    <path d="M120,-157.6C152.7,-141.5,174.3,-102.6,194.8,-58.8C215.3,-14.9,234.6,33.8,228.4,80.8C222.2,127.8,190.4,173.1,148.1,184C105.8,195,52.9,171.5,-2.4,174.8C-57.8,178.2,-115.6,208.4,-137.5,190.9C-159.3,173.3,-145.3,108,-153,56.3C-160.7,4.6,-190.2,-33.4,-178.3,-54.2C-166.4,-75.1,-113.2,-78.8,-76.6,-93.6C-40,-108.3,-20,-134.2,11.9,-150.5C43.7,-166.8,87.4,-173.6,120,-157.6Z" fill="rgba(204, 123, 51, 0.85)" />
+  </g>
+</svg>
+<section id="popular-destination">
+    <h1 class="title">destinations populaires</h1>
+    <div class="content">
+        <div class="box">
+            <img src="image/téléchargement (1).jpg" alt="">
+            <div class="content">
+                <div>
+                    <h4>Chefchaouen</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p>Ea iusto ipsa repudiandae amet conseq.</p>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <img src="image/images (1).jpg" alt="">
+            <div class="content">
+                <div>
+                    <h4>Fes</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p>Ea iusto ipsa repudiandae amet conseq.</p>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <img src="image/images (2).jpg" alt="">
+            <div class="content">
+                <div>
+                    <h4>Rabat</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p>Ea iusto ipsa repudiandae amet conseq.</p>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- box -->
+        <!-- box -->
+        <div class="box">
+            <img src="image/images.jpg" alt="">
+            <div class="content">
+                <div>
+                    <h4>Casa</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p>Ea iusto ipsa repudiandae amet conseq.</p>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- box -->
+        <!-- box -->
+        <div class="box">
+            <img src="image/port-tanger-maroc-1200x800.jpg" alt="">
+            <div class="content">
+                <div>
+                    <h4>Tanger</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p>Ea iusto ipsa repudiandae amet conseq.</p>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- box -->
+        <!-- box -->
+        <div class="box">
+            <img src="image/Le-New-York-Times-vante-les-mrites-du-tourisme-de-luxe-Marrakech.jpg" alt="">
+            <div class="content">
+                <div>
+                    <h4>Marrakech</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p>Ea iusto ipsa repudiandae amet conseq.</p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="a-propos">
+    <h1 class="title2">Les meilleurs offres</h1>
+    <div class="img-desc">
+        <div class="left">
+            <video src="{{ asset('video/video.mp4') }}" autoplay loop></video>
+        </div>
+        <div class="right">
+            <h3>Trouver votre vole ideal.</h3>
+            <p>Ne manquez pas notre offre exclusive de vol pour les prochaines vacances ! Nous sommes ravis de vous proposer des tarifs imbattables sur notre sélection de vols vers des destinations de rêve. Que vous recherchiez une escapade romantique, une aventure culturelle ou simplement un séjour détente au bord de la mer, nous avons tout ce qu'il vous faut. Réservez dès maintenant et économisez gros sur votre billet d'avion. Profitez de notre service de haute qualité et de nos vols confortables pour un voyage inoubliable.</p>
+            <a href="/offres">Voire</a>
+        </div>
+    </div>
+</section>
+
+<section id="steps">
+<h1 class="title3">Étapes d'Organisation de Voyage</h1>
+    <div class="wrapper">
+        <ul>
+            <li id="step-1">
+                <h4>Planifier</h4>
+                <p>Confiez-nous vos rêves d’évasion : en famille ou entre amis, nous trouverons la formule qui comblera vos attentes.</p>
+            </li>
+            <li id="step-2">
+                <h4>Organizer</h4>
+                <p>Bénéficiez de l’expertise de nos spécialistes de chaque destination, ils vous accompagnent dans la réalisation de votre voyage.</p>
+
+            </li>
+            <li id="step-3">
+                <h4>Voyager</h4>
+                <p>Nous nous chargeons d’assurer votre sécurité et de veiller à votre pleine sérénité tout au long de votre voyage.</p>
+            </li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+</section>
+<br><br>
+<footer>
+    <div>
+        <h1>Voyage-Maroc<span class="orange">.</span></h1>
+        <div style="margin-top: 73px;"><a href="/partenaire" style="color:white;margin-left: 190px;">Devenir partenaire</a></div>
+        <div style="margin-top: 69px;"><a href="" style="color:white;margin-left: 190px;">Inscription fournisseur</a></div>
+        <div style="margin-top: -120px;"><a href="" style="color:white;margin-left: 1000px;">À propos de nous</a></div>
+        <div style="margin-top: 77px;"><a href="" style="color:white;margin-left: 1000px;">Centre d'aide</a></div>
+        <hr style="margin-top: 117px;">
+        <div class="copyright">Copyright © Tous droits réservés. xxxxxx xxxxxx, xxxxxx xxxxxxx xxxxx xxxxxx</div>
+    </div>
+    <div class="icons" style="margin-top: -106px;margin-left: 573px;">
+        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
+    </div>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</footer>
+</body>
+</html>

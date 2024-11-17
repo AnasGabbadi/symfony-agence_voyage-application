@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Page-d'accueil{% endblock %}</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        body
+        {
+            font-family: Arial,sans-serif;
+            font-size: 19px;
+        }
+        h1
+        {
+            font-family: 'Crete Round', serif;
+            font-size: 45px;
+        }
+        h2
+        {
+            font-size: 55px;
+        }
+        h3
+        {
+            font-size: 30px;
+        }
+        h4
+        {
+            font-size: 24px;
+        }
+        p
+        {
+            line-height: 20px;
+            color: #777;
+        }
+        ul
+        {
+            list-style: none;
+        }
+        a
+        {
+            text-decoration: none;
+            color: #444;
+        }
+        .wrapper
+        {
+            width: 940px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        .orange
+        {
+            color: #ff7a00;
+        }
+        .clear
+        {
+            clear: both;
+        }
+        small
+        {
+            font-size: 13px;
+            font-style:italic;
+        }
+
+        /* HEADER */
+
+        header
+        {
+            height: 120px;
+            border-bottom: 1px solid;
+            border-image: linear-gradient(to right, transparent, #34495e, transparent) 1;
+        }
+        header h1
+        {
+            float: left;
+            margin-top: 32px;
+        }
+        header nav
+        {
+            float: right;
+            margin-bottom: 5px;
+            margin-right: -44px;
+        }
+        header nav ul li
+        {
+            float:left;
+            display: inline-block;
+        }
+        header nav ul li a
+        {
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        /* MAIN IMAGE */
+
+
+        #main-image h2
+        {
+            font-weight: normal;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 150px 0 40px 0;
+            margin-bottom: 20px;
+        }
+        #steps ul{
+            margin: 80px 0;
+            margin-top: 211px;
+        }
+        #steps ul li{
+            width: 300px;
+            float: left;
+            padding-top: 140px;
+            text-align: center;
+            margin-right: 10px;
+        }
+        #steps h4{
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        #a-propos {
+            margin-top: 100px;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+        .title {
+            text-transform: capitalize;
+            margin: 70px 0;
+            font-weight: bold;
+            color: rgba(62, 71, 87, 0.83);
+            position: relative;
+            margin-left: 16px;
+            font-size: 20px;
+        }
+        .title::after {
+            position: absolute;
+            left: -15px;
+            content: "";
+            height: 100%;
+            background-color: rgba(204, 123, 51, 0.85);
+            width: 5px;
+        }
+        .title2 {
+            text-transform: capitalize;
+            margin: 70px 0;
+            font-weight: bold;
+            color: rgba(62, 71, 87, 0.83);
+            position: relative;
+            margin-left: 151px;
+            font-size: 20px;
+        }
+        .title2::after {
+            position: absolute;
+            left: -15px;
+            content: "";
+            height: 100%;
+            background-color: rgba(204, 123, 51, 0.85);
+            width: 5px;
+        }
+        .img-desc .right h3 {
+            color: #fff;
+            font-size: 25px;
+            margin-bottom: 20px;
+
+        }
+        .img-desc .right p {
+            color: #999;
+            margin-bottom: 36px;
+        }
+        .img-desc .right a {
+            border: 1px solid #8a8a8a;
+            color: #8c500f;
+            font-size: 14px;
+            padding: 8px 25px;
+            font-weight: bold;
+            margin-left: 513px;
+            box-shadow: 0px 0px 10px;
+        }
+        .img-desc .left {
+            position: relative;
+            margin-left: 143px;
+            height: 247px;
+            width: 32%;
+            background-color: rgba(204, 123, 51, 0.85);
+        }
+        .img-desc .right {
+            width: 57%;
+        }
+
+        .img-desc .left video {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            box-shadow: 0 0 10px rgb(0, 0, 0);
+        }
+        .img-desc .left::after {
+            position: absolute;
+            bottom: -10px;
+            right: 10px;
+            content: "";
+            height: 100%;
+            background-color: rgba(62, 71, 87, 0.83);
+            width: 100%;
+            z-index: -1;
+        }
+        .left-right {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .left-right .left , .left-right .right  {
+            display: flex;
+            flex-direction: column;
+            width: 49%;
+        }
+        .img-desc .right h3 {
+            color: rgba(62, 71, 87, 0.83);
+            font-size: 25px;
+            margin-bottom: -187px;
+            margin-left: 634px;
+            margin-right: -516px;
+            margin-top: -253px;
+        }
+        .img-desc .right p {
+            color: #393939;
+            margin-bottom: 34px;
+            margin-top: 198px;
+            margin-left: 642px;
+            margin-right: -525px;
+        }
+        .img-desc .right a {
+            border: 1px solid #7d7d7d;
+            color: #915f00;
+            font-size: 14px;
+            padding: 8px 25px;
+            font-weight: bold;
+            margin-left: 645px;
+        }
+        form{
+            margin: 60px 0 20px 0;
+        }
+        label{
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: 10px;
+            color:#777;
+        }
+        footer{
+            height: 260px;
+            background-color: #444;
+        }
+        footer h1{
+            color: #fff;
+            text-align: center;
+            padding-top: 80px;
+
+        }
+        .copyright{
+            text-align: center;
+            font-weight: bold;
+            padding-top: 30px;
+            color: #777;
+        }
+        .home-btn {
+            margin-bottom: 20px;
+        }
+        .home-btn {
+            display:block;
+        }
+        .find_trip {
+            background-color: #121212;
+            padding: 0px 15px 0px 17px;
+            width: 80%;
+            position: absolute;
+            bottom: -70px;
+            margin-left: 140px;
+            border-radius: 55px;
+        }
+        .find_trip form {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 100%;
+
+        }
+        .find_trip form div , .find_trip form input[type="submit"]{
+            display: flex;
+            flex-direction: column;
+            width: 20%;
+        }
+        .find_trip form label {
+            color: #999;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        .find_trip form input {
+            padding: 8px 18px;
+            background-color: #0000002e;
+            border: 1px solid #777;
+            outline: 0;
+            width: 100%;
+            font-size: 13px;
+            color: #fff;
+            margin-bottom: 50px;
+
+        }
+        .find_trip form input[type="submit"] {
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            color: #6f6f6f;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        .find_trip form input[type="submit"]:hover {
+            box-shadow: 0 0 10px #d59a6f;
+        }
+        #popular-destination {
+            padding: 0 10% ;
+            margin-bottom: 50px;
+        }
+        #popular-destination .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+            gap: 32px;
+        }
+        #popular-destination .content .box {
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            transition: 0.5s;
+        }
+        #popular-destination .content .box img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        .box .content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #fff;
+            text-align: center;
+            align-items: center;
+            transform: translateX(100%);
+            transition: 0.5s;
+        }
+        .box .content  h4 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+        .box .content p {
+            padding: 2px;
+            font-size: 12px;
+        }
+        .box .content p:nth-child(3){
+            margin-bottom: 25px;
+        }
+        .box .content a {
+            margin-top: 60px;
+            padding: 10px 60px;
+            border: 2px solid rgba(62, 71, 87, 0.83);
+            color: #8b8b8b;
+            font-weight: bold;
+        }
+        .box:hover {
+            box-shadow: 0 0 10px rgba(204, 123, 51, 0.85);
+        }
+        .box:hover .content {
+            transform: translateX(0);
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            background-color: #1212128c;
+            text-align: inherit;
+            vertical-align: middle;
+            border-radius: 21px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+        nav ul li a {
+            display: block;
+            text-decoration: none;
+        }
+        .dropdown-menu li {
+            border-bottom: 1px solid rgba(204, 123, 51, 0.85);
+            padding: 10px;
+        }
+
+        .dropdown-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+        .menu-a a{
+            color: #dfdfdf;
+            padding: 1px 79px 0px 0px;
+            margin-right: 0px;
+
+        }
+        .menu-a li a{
+            margin-right: 56px;
+            padding-right: 36px;
+        }
+        .formButton {
+            border: 1px solid transparent;
+            padding: 1rem 3rem;
+            background-color: #ff3d00bf;
+            border-radius: 50px;
+            margin-top: 0rem;
+            font-size: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-left: 357px;
+        }
+
+        .formButton:hover {
+            box-shadow: 3px 5px 15px #ff3d00bf;
+            transform: translateY(-5px);
+        }
+        .icons a{
+            text-decoration: none;
+            color: #fff;
+        }
+        .icons ion-icon{
+            color: #fff;
+            font-size: 30px;
+            padding-left: 14px;
+            padding-top: 5px;
+            transition: 0.3s ease;
+        }
+        .icons ion-icon:hover{
+            color: #ff7200;
+        }
+        h1 {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 2.5rem;
+        }
+
+        .accordion {
+            width: 90%;
+            max-width: 1000px;
+            margin: 2rem auto;
+        }
+        .accordion-item {
+            background-color: #fff;
+            color: #111;
+            margin: 1rem 0;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25);
+        }
+        .accordion-item-header {
+            padding: 0.5rem 3rem 0.5rem 1rem;
+            min-height: 3.5rem;
+            line-height: 1.25rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+        }
+        .accordion-item-header::after {
+            content: "\002B";
+            font-size: 2rem;
+            position: absolute;
+            right: 1rem;
+        }
+        .accordion-item-header.active::after {
+            content: "\2212";
+        }
+        .accordion-item-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+        .accordion-item-body-content {
+            padding: 1rem;
+            line-height: 1.5rem;
+            border-top: 1px solid;
+            border-image: linear-gradient(to right, transparent, #34495e, transparent) 1;
+        }
+
+        @media(max-width:767px) {
+            html {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: white">
+<header>
+    <div class="wrapper">
+        <h1>Voyage-Maroc<span class="orange">.</span></h1>
+        <nav style="margin-top: 50px;">
+            <ul>
+                <li><a href="/">Accueil |</a></li>
+                {% if app.user %}
+                <li><a>{{app.user.username}} |</a></li>
+                <li><a href="{{ path('app_logout')}}">deconnexion |</a></li>
+                 {% else %}
+                <li><a href="{{ path('app_register')}}">S'INSCRIRE |</a></li>
+                <li><a href="{{ path('app_login')}}">Connexion |</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</header>
+<script>
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach((dropdown) => {
+        dropdown.addEventListener('click', () => {
+            dropdown.classList.toggle('active');
+        });
+    });
+</script>
+<div>
+    <img src="{{ asset('image/9e7acfc2-ad25-4f4e-8f5b-3b8b4619757b.jpg') }}" style="    height: 484px;
+;margin-left: 864px;"></img>
+</div>
+<section id="main-image">
+    <div class="wrapper">
+        <h2 style="    margin-left: -207px;
+;    margin-top: -523px;
+;width: 952px;"><strong>Gagner des commissions ne pourrait pas être plus facile.</strong></h2>
+    </div>
+    <button class="formButton"><a href="{{ path('app_register')}}">S'INSCRIRE</a></button>
+</section>
+<br><br><br><br><br><br>
+<div class="accordion">
+    <div class="accordion-item">
+        <div class="accordion-item-header">
+            C'est quoi un partenaire d'entreprise ?
+        </div>
+        <div class="accordion-item-body">
+            <div class="accordion-item-body-content">
+                Parmi les partenaires de l'entreprise, on trouve les clients (entreprises, administrations ou particuliers), les fournisseurs (de biens, d'immobilisations ou de services), les banques, les associés et l'Etat. Tous ces acteurs ont un poids différent dans la relation avec l'entreprise.
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <div class="accordion-item-header">
+            Quelle est le rôle d'un partenaire ?
+        </div>
+        <div class="accordion-item-body">
+            <div class="accordion-item-body-content">
+                Réunir toutes les ressources et les compétences nécessaires pour réaliser le projet. Développer et commercialiser plus vite les nouveaux produits, procédés ou services. Réaliser des économies. Donner un meilleur accès à certaines matières ou services.      </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <div class="accordion-item-header">
+            Pourquoi nous choisire ?
+        </div>
+        <div class="accordion-item-body">
+            <div class="accordion-item-body-content">
+                <ul style="padding-left: 1rem;">
+                    <li>Flexibilité ultime</li>
+                    <li>Expériences mémorables</li>
+                    <li>La qualité au coeur de nos préoccupations</li>
+                    <li>Assistance primée</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script>const accordionItemHeaders = document.querySelectorAll(".accordion-item-header");
+
+    accordionItemHeaders.forEach(accordionItemHeader => {
+        accordionItemHeader.addEventListener("click", event => {
+
+            // Uncomment in case you only want to allow for the display of only one collapsed item at a time!
+
+            // const currentlyActiveAccordionItemHeader = document.querySelector(".accordion-item-header.active");
+            // if(currentlyActiveAccordionItemHeader && currentlyActiveAccordionItemHeader!==accordionItemHeader) {
+            //   currentlyActiveAccordionItemHeader.classList.toggle("active");
+            //   currentlyActiveAccordionItemHeader.nextElementSibling.style.maxHeight = 0;
+            // }
+
+            accordionItemHeader.classList.toggle("active");
+            const accordionItemBody = accordionItemHeader.nextElementSibling;
+            if(accordionItemHeader.classList.contains("active")) {
+                accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + "px";
+            }
+            else {
+                accordionItemBody.style.maxHeight = 0;
+            }
+
+        });
+    });</script>
+<br><br><br>
+<footer>
+    <div>
+        <h1>Voyage-Maroc<span class="orange">.</span></h1>
+        <div class="copyright">Copyright © Tous droits réservés. xxxxxx xxxxxx, xxxxxx xxxxxxx xxxxx xxxxxx</div>
+    </div>
+    </div>
+    <div class="icons">
+        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
+    </div>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</footer>
+</body>
+</html>

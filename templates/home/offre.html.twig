@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Page-d'accueil{% endblock %}</title>
+    <style>
+
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        body
+        {
+            font-family: Arial,sans-serif;
+            font-size: 19px;
+        }
+        h1
+        {
+            font-family: 'Crete Round', serif;
+            font-size: 45px;
+        }
+        h2
+        {
+            font-size: 55px;
+        }
+        h3
+        {
+            font-size: 30px;
+        }
+        h4
+        {
+            font-size: 24px;
+        }
+        p
+        {
+           line-height: 30px;
+            color: #777;
+            margin-left: 593px;
+        }
+        ul
+        {
+            list-style: none;
+        }
+        a
+        {
+            text-decoration: none;
+            color: #444;
+        }
+        .wrapper
+        {
+            width: 940px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        .orange
+        {
+            color: #ff7a00;
+        }
+        .clear
+        {
+            clear: both;
+        }
+        small
+        {
+            font-size: 13px;
+            font-style:italic;
+        }
+
+        /* HEADER */
+
+        header
+        {
+            height: 120px;
+            border-bottom: 1px solid;
+            border-image: linear-gradient(to right, transparent, #34495e, transparent) 1;
+        }
+        header h1
+        {
+            float: left;
+            margin-top: 32px;
+        }
+        header nav
+        {
+            float: right;
+            margin-bottom: 5px;
+            margin-right: -44px;
+        }
+        header nav ul li
+        {
+            float:left;
+            display: inline-block;
+        }
+        header nav ul li a
+        {
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        footer{
+            height: 500px;
+            background-color: #444;
+        }
+        footer h1{
+            color: #fff;
+            text-align: center;
+            padding-top: 80px;
+
+        }
+        .copyright{
+            text-align: center;
+            font-weight: bold;
+            padding-top: 27px;
+            color: #777;
+        }
+ 
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            background-color: #1212128c;
+            text-align: inherit;
+            vertical-align: middle;
+            border-radius: 21px;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+        nav ul li a {
+            display: block;
+            text-decoration: none;
+        }
+        .dropdown-menu li {
+            border-bottom: 1px solid rgba(204, 123, 51, 0.85);
+            padding: 10px;
+        }
+
+        .dropdown-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+        .menu-a a{
+            color: #dfdfdf;
+            padding: 1px 79px 0px 0px;
+            margin-right: 0px;
+
+        }
+        .menu-a li a{
+            margin-right: 28px;
+            padding-right: 36px;
+        }
+        .container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 20px;
+        }
+
+        .tour {
+        width: 99%;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        }
+
+        h2 {
+            margin-left: 587px;
+        }
+
+        img {
+           width: 30%;
+            height: auto;
+            margin-bottom: 13px;
+            margin-top: -273px;
+            margin-left: 49px;
+        }
+
+        .btn {
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            margin-left: 1110px;
+            border: 1px solid transparent;
+            background-color: #ff3d00bf;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .rez{
+            color:  #fff ;
+        }
+        .icons a{
+            text-decoration: none;
+            color: #fff;
+        }
+        .icons ion-icon{
+            color: #fff;
+            font-size: 30px;
+            padding-left: 14px;
+            padding-top: 5px;
+            transition: 0.3s ease;
+        }
+        .icons ion-icon:hover{
+            color: #ff7200;
+        }
+    <!-- Filterable/ Cards Section -->
+
+        #filter-buttons button {
+        border-radius: 3px;
+        background: #fff;
+        border-color: transparent;
+        }
+
+        #filter-buttons button:hover {
+        background: #ddd;
+        }
+
+        #filter-buttons button.active {
+        color: #fff;
+        background: #6c757d;
+        }
+
+        #filterable-cards .card.hide {
+        display: none;
+        }
+        .offre_heros{
+        margin-left: 1184px;
+        background-color: #ff8100bf;
+        border-radius: 21px 0px 28px;
+        text-align: center;
+        }
+        .chkl{
+        margin-top: 0px;
+        margin-left: -308px;
+        margin-bottom: 63px;
+        color: rgba(62, 71, 87, 0.83);
+        }
+</style>    
+</head>
+<body style="background-color: white">
+<header>
+    <div class="wrapper">
+        <h1>Voyage-Maroc<span class="orange">.</span></h1>
+        <nav style="margin-top: 50px;">
+            <ul>
+                <li><a href="/">Accueil |</a></li>
+                <li><a href="/">S'INSCRIRE |</a></li>
+                <li><a href="/">Connexion |</a></li>
+                <li class="dropdown">
+                    <a href="">Plus |</a>
+                    <ul class="dropdown-menu" style="margin-left: -13px;margin-right: 76px;width: 234px;height: 137px;width: 233px;height: 99px;">
+                        <nav class="menu-a" style="width: 232px;margin-right: 0px;text-align: center;">
+                            <li><a href="#">Centre d'aide</a></li>
+                            <li><a href="#">Espace privé</a></li>
+                        </nav>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<br><br><br>
+<div class="containers">
+    <div class="chkl">
+        <h2>Commencer votre exploration .</h2>
+    </div>
+      <div class="row mt-5" id="filter-buttons">
+        <div class="col-12" style="margin-left: -805px;">
+          <button class="btn mb-2 me-1 active" data-filter="all" style="">Show all</button>
+          <button class="btn mb-2 mx-1" data-filter="Fès" style="margin-left: 122px;">fes</button>
+          <button class="btn mb-2 mx-1" data-filter="Cassa" style="margin-left: 122px;">cassa</button>
+          <button class="btn mb-2 mx-1" data-filter="tanger" style="margin-left: 122px;">tanger</button>
+        </div>
+      </div>
+<section>
+<br><br>
+        <div class="container">
+
+            {% for item in offres %}
+    <div class="row px-2 mt-4 gap-3" id="filterable-cards">
+        <div class="card p-0" data-name="{{ item.ville }}">
+            <div class="tour">
+                <div class="col mt-4 py-5">
+                    <div>
+                        <h2 class="titre_heros"> {{ item.titre }}</h2>
+                    </div>
+                    <div>
+                        <h4 class="offre_heros"> {{ item.prix }}</h4>
+                    </div>
+                    <br>
+
+                    <div class="mt-4">
+                        <p class="sous_heros text-muted"> {{ item.soustitre }} . <em>{{ item.ville }}</em></p>
+                        
+                    </div>
+
+                    <br>
+                    <br>
+
+                    <div class="mt-5 ">
+                       <button class="btn"><a href="" class="rez">Reserver</a>
+                    </div>
+
+
+                </div>
+
+                <div class="col">
+                    <img src="/circuits/{{ item.image }}" class="img-fluid img-heros" alt="img">
+                </div>
+            </div>
+        </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<br><br><br>
+<footer>
+    <div>
+        <h1>Voyage-Maroc<span class="orange">.</span></h1>
+        <div style="margin-top: 73px;"><a href="/partenaire" style="color:white;margin-left: 190px;">Devenir partenaire</a></div>
+        <div style="margin-top: 69px;"><a href="" style="color:white;margin-left: 190px;">Inscription fournisseur</a></div>
+        <div style="margin-top: -120px;"><a href="" style="color:white;margin-left: 1000px;">À propos de nous</a></div>
+        <div style="margin-top: 77px;"><a href="" style="color:white;margin-left: 1000px;">Centre d'aide</a></div>
+        <hr style="margin-top: 117px;">
+        <div class="copyright">Copyright © Tous droits réservés. xxxxxx xxxxxx, xxxxxx xxxxxxx xxxxx xxxxxx</div>
+    </div>
+    <div class="icons" style="margin-top: -106px;margin-left: 573px;">
+        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
+    </div>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script>// Select relevant HTML elements
+  const filterButtons = document.querySelectorAll("#filter-buttons button");
+  const filterableCards = document.querySelectorAll("#filterable-cards .card");
+  
+  // Function to filter cards based on filter buttons
+  const filterCards = (e) => {
+      document.querySelector("#filter-buttons .active").classList.remove("active");
+      e.target.classList.add("active");
+  
+      filterableCards.forEach(card => {
+          // show the card if it matches the clicked filter or show all cards if "all" filter is clicked
+          if(card.dataset.name === e.target.dataset.filter || e.target.dataset.filter === "all") {
+              return card.classList.replace("hide", "show");
+          }
+          card.classList.add("hide");
+      });
+  }
+  
+  filterButtons.forEach(button => button.addEventListener("click", filterCards));</script>
+</footer>
+</body>
+</html>

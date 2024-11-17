@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Page-d'accueil{% endblock %}</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        body
+        {
+            font-family: Arial,sans-serif;
+            font-size: 19px;
+        }
+        h1
+        {
+            font-family: 'Crete Round', serif;
+            font-size: 45px;
+        }
+        h2
+        {
+            font-size: 55px;
+        }
+        h3
+        {
+            font-size: 30px;
+        }
+        h4
+        {
+            font-size: 24px;
+        }
+        p
+        {
+            line-height: 20px;
+            color: #777;
+        }
+        ul
+        {
+            list-style: none;
+        }
+        a
+        {
+            text-decoration: none;
+            color: #444;
+        }
+        .wrapper
+        {
+            width: 940px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        .orange
+        {
+            color: #ff7a00;
+        }
+        .clear
+        {
+            clear: both;
+        }
+        small
+        {
+            font-size: 13px;
+            font-style:italic;
+        }
+
+        /* HEADER */
+
+        header
+        {
+            height: 120px;
+            border-bottom: 1px solid;
+            border-image: linear-gradient(to right, transparent, #34495e, transparent) 1;
+        }
+        header h1
+        {
+            float: left;
+            margin-top: 32px;
+        }
+        header nav
+        {
+            float: right;
+            margin-bottom: 5px;
+            margin-right: -44px;
+        }
+        header nav ul li
+        {
+            float:left;
+            display: inline-block;
+        }
+        header nav ul li a
+        {
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        /* MAIN IMAGE */
+
+
+        #main-image h2
+        {
+            font-weight: normal;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 150px 0 40px 0;
+            margin-bottom: 20px;
+        }
+        #steps ul{
+            margin: 80px 0;
+            margin-top: 211px;
+        }
+        #steps ul li{
+            width: 300px;
+            float: left;
+            padding-top: 140px;
+            text-align: center;
+            margin-right: 10px;
+        }
+        #steps h4{
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        #a-propos {
+            margin-top: 100px;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+        .title {
+            text-transform: capitalize;
+            margin: 70px 0;
+            font-weight: bold;
+            color: rgba(62, 71, 87, 0.83);
+            position: relative;
+            margin-left: 16px;
+            font-size: 20px;
+        }
+        .title::after {
+            position: absolute;
+            left: -15px;
+            content: "";
+            height: 100%;
+            background-color: rgba(204, 123, 51, 0.85);
+            width: 5px;
+        }
+        .title2 {
+            text-transform: capitalize;
+            margin: 70px 0;
+            font-weight: bold;
+            color: rgba(62, 71, 87, 0.83);
+            position: relative;
+            margin-left: 151px;
+            font-size: 20px;
+        }
+        .title2::after {
+            position: absolute;
+            left: -15px;
+            content: "";
+            height: 100%;
+            background-color: rgba(204, 123, 51, 0.85);
+            width: 5px;
+        }
+        footer{
+            height: 260px;
+            background-color: #444;
+        }
+        footer h1{
+            color: #fff;
+            text-align: center;
+            padding-top: 80px;
+
+        }
+        .copyright{
+            text-align: center;
+            font-weight: bold;
+            padding-top: 30px;
+            color: #777;
+        }
+   .form-views {
+	background: #f5f5f5;
+    padding: 2rem;
+    max-width: 576px;
+    width: 100%;
+    border-radius: 2.75rem;
+    box-shadow: 0px 20px 0px 0px #5858589e;
+    text-align: center;
+    margin-left: 369px;
+}
+        .form-views h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        textarea {
+            width: 58%;
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 1.5rem;
+            outline: none;
+            resize: none;
+            margin-bottom: 0.5rem;
+        }
+        .username {
+            width: 58%;
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 1.5rem;
+            outline: none;
+            resize: none;
+            margin-bottom: 0.5rem;
+            border-color: #f56c1d;
+        }
+        .btn-group {
+            display: flex;
+            grid-gap: .5rem;
+            align-items: center;
+        }
+        .btn-group .btn {
+            padding: .75rem 1rem;
+            border-radius: .5rem;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: .875rem;
+            font-weight: 500;
+        }
+        .btn-group .btn.submit {
+            color: black;
+            background-color: #ff8100;
+            width: 143px;
+            margin-top: 27px;
+            margin-left: 213px;
+        }
+        .btn-group .btn.submit:hover {
+            background: var(--blue-d-1);
+        }
+        /* public/css/style.css */
+.views-container {
+text-align: center;
+  margin-top: 20px;
+}
+
+.view-card {
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.view-card .username {
+  font-weight: bold;
+  color: #333;
+  margin-left: 93px;
+}
+
+.view-card .creatview {
+  font-style: italic;
+  color: #666;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in-animation {
+  animation: fade-in 0.5s ease-in;
+}
+
+
+
+    </style>
+</head>
+<body style="background-color: white">
+<header>
+    <div class="wrapper">
+        <h1>Voyage-Maroc<span class="orange">.</span></h1>
+        <nav style="margin-top: 50px;">
+            <ul>
+                <li><a href="/">Accueil |</a></li>
+                {% if app.user %}
+                <li><a>{{app.user.username}} |</a></li>
+                <li><a href="{{ path('app_logout')}}">deconnexion |</a></li>
+                 {% else %}
+                <li><a href="{{ path('app_register')}}">S'INSCRIRE |</a></li>
+                <li><a href="{{ path('app_login')}}">Connexion |</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</header>
+<br><br><br><br>
+<div class="form-views">
+    <h3>Lorem ipsum dolor sit amet.</h3>
+    <form action="" method="post">
+    <input class="username" type="text" name="username" placeholder="username">
+    <textarea  name="creatview" placeholder="create view"></textarea>
+    <div class="btn-group">
+    <button type="submit" class="btn submit" >valider</button>
+    </div>
+</div>
+</form>
+<br><br><br><br>
+    <h1 style="text-align: center">les avis des clients</h1>
+    <div class="views-container">
+        {% if views is not empty %}
+            {% for view in views %}
+                <div class="view-card" style="
+                        padding-right: 29px;
+                        width: 502px;
+                        height: 93px;
+                        padding-left: 56px;
+                        margin-left: 365px;">
+                    <div class="username">{{ view.username }}</div>
+                    <div class="creatview">{{ view.creatview }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Aucun view n'a été créé.</p>
+        {% endif %}
+    </div>
+<br><br><br><br>
+<footer>
+    <div>
+        <h1>Voyage-Maroc<span class="orange">.</span></h1>
+        <div class="copyright">Copyright © Tous droits réservés. xxxxxx xxxxxx, xxxxxx xxxxxxx xxxxx xxxxxx</div>
+    </div>
+    </div>
+    <div class="icons">
+        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
+    </div>
+    </div>
+    <script>$(document).ready(function() {
+  $('.view-card').addClass('fade-in-animation');
+});</script>
+</footer>
+</body>
+</html>

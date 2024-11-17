@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email and Password Validation</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:  -webkit-linear-gradient(bottom, #000000b5, #ff3d00bf);        }
+        .container {
+            position: relative;
+            max-width: 370px;
+            width: 100%;
+            padding: 25px;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        .container header {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+        }
+        .container form {
+            margin-top: 30px;
+        }
+        form .field {
+            
+        }
+        form .input-field {
+            position: relative;
+            height: 55px;
+            width: 100%;
+            
+        }
+        form .form-control{
+            position: relative;
+            height: 37px;
+            width: 100%;
+            outline: none;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            border: 1px solid #d1d1d1;
+         }
+        .input-field input {
+            height: 100%;
+            width: 100%;
+            outline: none;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            border: 1px solid #d1d1d1;
+        }
+        .invalid input {
+            border-color: #d93025;
+        }
+        .input-field .show-hide {
+            position: absolute;
+            right: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #919191;
+            cursor: pointer;
+            padding: 3px;
+        }
+        .field .error {
+            display: flex;
+            align-items: center;
+            margin-top: 6px;
+            color: #d93025;
+            font-size: 13px;
+            display: none;
+        }
+        .invalid .error {
+            display: flex;
+        }
+        .error .error-icon {
+            margin-right: 6px;
+            font-size: 15px;
+        }
+        .create-password .error {
+            align-items: flex-start;
+        }
+        .create-password .error-icon {
+            margin-top: 4px;
+        }
+        .button {
+            margin: 25px 0 6px;
+        }
+        .button input {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 400;
+            background-color: #ff3d00bf;
+
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .button input:hover {
+            background-color: black;
+        }
+        li{    color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+   <form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <h1 class="h3 mb-3 font-weight-normal" style="text-align: center;">Sign in</h1>
+    <label for="inputEmail">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+        <div class="input-field button">
+        <input type="submit" value="Confirmez" />
+        </div>
+    
+</div>
+</body>
+</html>
